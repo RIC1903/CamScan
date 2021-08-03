@@ -2,6 +2,12 @@
   package="com.camscan">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+<!-- Include this only if you are planning to use the camera roll -->
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+
 
     <application
       android:name=".MainApplication"
