@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image, FlatList } from 'react-native';
-import { RNCamera } from 'react-native-camera';
-import {launchImageLibrary} from 'react-native-image-picker';
 import ImagePicker from 'react-native-image-crop-picker';
 
 export default class Scan extends Component {
