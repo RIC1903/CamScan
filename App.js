@@ -6,6 +6,7 @@ const  Stack = createStackNavigator();
 
 
 import Main from './components/Main.js';
+import Converter from './components/main/Converter.js';
 
 export default class App extends Component {
   render(){
@@ -15,6 +16,7 @@ export default class App extends Component {
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Main">
               <Stack.Screen name="Main" component={Main} options={{headerShown:false}}/>
+              <Stack.Screen name="Converter" component={Converter} options={{headerShown:false}}/>
             </Stack.Navigator>
           </NavigationContainer>  
       </View>

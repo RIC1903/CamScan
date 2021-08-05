@@ -48,7 +48,8 @@ export default class Scan extends Component {
           <TouchableOpacity onPress={this.clickPicture} style={styles.capture}>
             <Text style={{color:'white'}}>Camera</Text>
           </TouchableOpacity>
-          <TouchableOpacity  style={styles.capture}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Converter',{imageList:this.state.imageList})} 
+          style={styles.capture}>
             <Text style={{color:'white'}}>Submit</Text>
           </TouchableOpacity>
           </View>
