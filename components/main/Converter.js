@@ -4,12 +4,23 @@ import RNImageToPdf from 'react-native-image-to-pdf';
 
 export class Converter extends Component {
     constructor(props){
+        var currentdate = new Date();
+        var datetime =currentdate.getDay() + " " + currentdate.getMonth() 
+        + " " + currentdate.getFullYear() + " @ " 
+        + currentdate.getHours() + ":" 
+        + currentdate.getMinutes() + ":" + currentdate.getSeconds();
         super(props);
         this.state = {
-            imagePathList: []
+            imagePathList: [],
+            fileName: datetime
         }
     }
     componentDidMount(){
+        if(this.props.route.params.fileName !== ''){
+            this.setState({
+                fileName: this.props.route.params.fileName+'.pdf'
+            })
+        }
         for(let i=0;i<this.props.route.params.imageList.length;i++){
             this.state.imagePathList.push(this.props.route.params.imageList[i].path.substring(8))
         }
@@ -35,12 +46,13 @@ export class Converter extends Component {
         try {
             const options = {
                 imagePaths: this.state.imagePathList,
-                name: 'PDFName.pdf',
+                name: this.state.fileName+'.pdf',
                 maxSize: { // optional maximum image dimension - larger images will be resized
                     width: 900,
                     height: 1200,
                 },
                 quality: .5, // optional compression paramter
+                
             };
             const pdf = await RNImageToPdf.createPDFbyImages(options);
             

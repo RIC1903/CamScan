@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image, FlatList, TextInput } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 
 export default class Scan extends Component {
@@ -9,13 +9,16 @@ export default class Scan extends Component {
     this.state = {
       imageList: [],
       update: false,
+      fileName: '',
     };
   }
   componentDidUpdate(){
+    console.log(this.state.fileName)
       if(this.state.update){
         this.setState({
           update:false
         })
+        
       }
   }
   render() {
@@ -41,18 +44,26 @@ export default class Scan extends Component {
         />
       }
         <View style={{flex:1,flexDirection:'row',justifyContent:'space-evenly'}}>
-
           <TouchableOpacity onPress={this.imagePicker} style={styles.capture}>
             <Text style={{color:'white'}}>Gallery</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={this.clickPicture} style={styles.capture}>
             <Text style={{color:'white'}}>Camera</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Converter',{imageList:this.state.imageList})} 
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Converter',{imageList:this.state.imageList,fileName: this.state.fileName})} 
           style={styles.capture}>
             <Text style={{color:'white'}}>Submit</Text>
           </TouchableOpacity>
-          </View>
+        </View>
+        <View>
+          <TextInput 
+            placeholder="Filename"
+            onChangeText={(text) => this.setState({
+              fileName: text,
+              
+            })}
+          />
+        </View>
       </View>
     );
     
