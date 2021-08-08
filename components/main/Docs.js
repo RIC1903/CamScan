@@ -16,21 +16,12 @@ export class Docs extends Component {
     }
     componentDidMount(){
         this.readFiles();
-        this.getThumbnail();
+        
         
     }
     
     
-    getThumbnail = async () => {
-        const filePath = '/storage/emulated/0/Android/data/com.camscan/files/Test.pdf';
-        const page = 0;
-
-        const { uri, width, height } = await PdfThumbnail.generate(filePath, page);
-        // console.log(uri)
-        this.setState({
-            uri:uri
-        })
-    }
+    
     render() {
         return (
            <View style={styles.container}>
@@ -46,7 +37,7 @@ export class Docs extends Component {
                 >   
                
                     <Image style={{height:150,width: 150}} source={{uri: item.thumb}}/>
-                    <Text style={{textAlign:'center',textmarginTop:5, fontSize: 15}}>{item.file}</Text>
+                    <Text style={{textAlign:'center',marginTop:5, fontSize: 15}}>{item.file}</Text>
                     
                 </TouchableOpacity>
                 
