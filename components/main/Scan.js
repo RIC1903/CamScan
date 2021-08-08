@@ -12,15 +12,7 @@ export default class Scan extends Component {
       fileName: '',
     };
   }
-  componentDidUpdate(){
-    console.log(this.state.fileName)
-      if(this.state.update){
-        this.setState({
-          update:false
-        })
-        
-      }
-  }
+  
   render() {
     
     console.log(this.state.imageList);
@@ -59,8 +51,8 @@ export default class Scan extends Component {
         <View>
           <TextInput 
             placeholder="Filename"
-            placeholderTextColor="black"
-            style={{fontSize: 18}}
+            placeholderTextColor="gray"
+            style={{fontSize: 18,color:'black'}}
             onChangeText={(text) => this.setState({
               fileName: text,
               
@@ -102,7 +94,8 @@ imagePicker = async () =>
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: 'column',
+    overflow: 'scroll'
   },
   preview: {
     flex: 1,
