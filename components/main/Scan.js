@@ -50,14 +50,17 @@ export default class Scan extends Component {
           <TouchableOpacity onPress={this.clickPicture} style={styles.capture}>
             <Text style={{color:'white'}}>Camera</Text>
           </TouchableOpacity>
+          {this.state.imageList.length > 0 ? (
           <TouchableOpacity onPress={() => this.props.navigation.navigate('Converter',{imageList:this.state.imageList,fileName: this.state.fileName})} 
           style={styles.capture}>
             <Text style={{color:'white'}}>Submit</Text>
-          </TouchableOpacity>
+          </TouchableOpacity>) : null}
         </View>
         <View>
           <TextInput 
             placeholder="Filename"
+            placeholderTextColor="black"
+            style={{fontSize: 18}}
             onChangeText={(text) => this.setState({
               fileName: text,
               

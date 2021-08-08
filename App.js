@@ -14,9 +14,9 @@ export default class App extends Component {
       <View style={{flex:1}}>
         
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Main">
-              <Stack.Screen name="Main" component={Main} options={{headerShown:false}}/>
-              <Stack.Screen name="Converter" component={Converter} options={{headerShown:false}}/>
+            <Stack.Navigator initialRouteName="CamScan">
+              <Stack.Screen name="CamScan" component={Main} />
+              <Stack.Screen name="Converter" component={Converter} options={{headerTitle:'CamScan'}}/>
             </Stack.Navigator>
           </NavigationContainer>  
       </View>

@@ -29,15 +29,18 @@ export class Converter extends Component {
      {
          console.log(this.props.route.params.imageList);
         return (
-           <View style={{flex:1}}>
+           <View style={{flex:1, padding:15}}>
+               <Text style={{fontSize:16}}>The pdf will be saved in Android/data/com.camscan/files/{this.state.fileName}.You can also view all your genereated pdfs from the Docs page. </Text>
+               <Text style={{fontSize:18,fontWeight:'bold',marginTop:50}}>Click on the button below to generate pdf, or go back to re-edit your pages</Text>
                <TouchableOpacity
                 onPress={this.myAsyncPDFFunction} style={{flex: 0,
                     backgroundColor: '#694fad',
                     borderRadius: 5,
                     padding: 15,
                     paddingHorizontal: 20,
-                    alignSelf: 'center'}} >
-                    <Text style={{color:'white'}}>Submit</Text>
+                    alignSelf: 'center',
+                    marginTop:20}}>
+                    <Text style={{color:'white'}}>Generate PDF</Text>
                </TouchableOpacity>
            </View>
         )
@@ -55,6 +58,11 @@ export class Converter extends Component {
                 
             };
             const pdf = await RNImageToPdf.createPDFbyImages(options);
+            this.props.navigation.reset({
+                index: 0,
+                routes: [{name: 'Docs'}],
+              });
+            this.props.navigation.navigate('Docs',{updated:true})
             
             console.log(pdf.filePath);
         } catch(e) {
