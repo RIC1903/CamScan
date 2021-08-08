@@ -19,11 +19,7 @@ export class Docs extends Component {
         this.getThumbnail();
         
     }
-    componentDidUpdate(){
-        console.log(this.props.route)
-        
-        
-    }
+    
     
     getThumbnail = async () => {
         const filePath = '/storage/emulated/0/Android/data/com.camscan/files/Test.pdf';
@@ -44,12 +40,14 @@ export class Docs extends Component {
                 horizontal={false}
                 data={this.state.files}
                 renderItem={({item}) => (
-                <View style={{padding:5,marginTop: 10}}>
+                <View style={{flex:1/2,flexDirection:'row'}}>
                 <TouchableOpacity style={{flex:1,justifyContent:'center', paddingHorizontal:25, paddingVertical:10}}
                     onPress={()=> this.downloadFile({item})}
-                >
+                >   
+               
                     <Image style={{height:150,width: 150}} source={{uri: item.thumb}}/>
-                    <Text style={{textAlign:'center',marginTop:5, fontSize: 15}}>{item.file}</Text>
+                    <Text style={{textAlign:'center',textmarginTop:5, fontSize: 15}}>{item.file}</Text>
+                    
                 </TouchableOpacity>
                 
                 

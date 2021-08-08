@@ -49,7 +49,7 @@ export class Converter extends Component {
         try {
             const options = {
                 imagePaths: this.state.imagePathList,
-                name: this.state.fileName+'.pdf',
+                name: this.state.fileName,
                 maxSize: { // optional maximum image dimension - larger images will be resized
                     width: 900,
                     height: 1200,
