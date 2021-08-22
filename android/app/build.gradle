@@ -154,6 +154,14 @@ android {
             keyPassword 'android'
         }
     }
+    signingConfigs {
+        release {
+        storeFile file('CamScan.keystore')
+        storePassword 'sadsai9500'
+        keyAlias 'CamScan'
+        keyPassword 'sadsai9500'
+        }
+  }
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
@@ -164,6 +172,8 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+
+            signingConfig signingConfigs.release
         }
     }
 
