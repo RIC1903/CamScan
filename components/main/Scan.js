@@ -19,13 +19,13 @@ export default class Scan extends Component {
     
     return (
       <View style={styles.container}>
-        
+          {this.state.imageList.length > 0 ? <Text onPress={()=> this.setState({imageList: []})} style={{textAlign:'center',fontSize:14, fontWeight:'bold',marginTop: 5, color:'#FF7F7F'}}>X Clear all</Text> : null}
           {this.state.imageList && 
           <FlatList 
-            style={{maxHeight:600}}
+            style={{minHeight:500,marginBottom:10}}
             numColumns={2}
             horizontal={false}
-            data={this.state.imageList}
+            data={this.state.imageList} 
             renderItem={({item}) => (
               <View style={{flex:1,alignItems:'center'}}>
             <Text></Text>
@@ -35,7 +35,7 @@ export default class Scan extends Component {
         }keyExtractor={(item, index) => index.toString()}
         />
       }
-        <View style={{flex:1,flexDirection:'row',justifyContent:'space-evenly'}}>
+        <View style={{flex:1,flexDirection:'row',justifyContent:'space-evenly',minHeight:50}}>
           <TouchableOpacity onPress={this.imagePicker} style={styles.capture}>
             <Text style={{color:'white'}}>Gallery</Text>
           </TouchableOpacity>
@@ -58,6 +58,7 @@ export default class Scan extends Component {
               
             })}
           />
+
         </View>
       </View>
     );
@@ -77,7 +78,8 @@ export default class Scan extends Component {
   });
 imagePicker = async () => 
   ImagePicker.openPicker({
-    multiple: true
+    multiple: false,
+    cropping: true
   }).then(images => {
     for(let i=0;i<images.length;i++){
       this.state.imageList.push(images[i])
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
   },
   capture: {
     flex: 0,
-    backgroundColor: '#694fad',
+    backgroundColor: '#576F90',
     borderRadius: 5,
     padding: 15,
     paddingHorizontal: 20,

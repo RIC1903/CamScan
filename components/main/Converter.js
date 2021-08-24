@@ -12,7 +12,8 @@ export class Converter extends Component {
         super(props);
         this.state = {
             imagePathList: [],
-            fileName: datetime
+            fileName: datetime,
+            generation: false,
         }
     }
     componentDidMount(){
@@ -34,7 +35,7 @@ export class Converter extends Component {
                <Text style={{fontSize:18,fontWeight:'bold',marginTop:50}}>Click on the button below to generate pdf, or go back to re-edit your pages</Text>
                <TouchableOpacity
                 onPress={this.myAsyncPDFFunction} style={{flex: 0,
-                    backgroundColor: '#694fad',
+                    backgroundColor: '#576F90',
                     borderRadius: 5,
                     padding: 15,
                     paddingHorizontal: 20,
@@ -42,10 +43,14 @@ export class Converter extends Component {
                     marginTop:20}}>
                     <Text style={{color:'white'}}>Generate PDF</Text>
                </TouchableOpacity>
+               {this.state.generation && <Text>Please Wait...</Text>}
            </View>
         )
     }
     myAsyncPDFFunction = async () => {
+        this.setState({
+            generation: true
+        })
         try {
             const options = {
                 imagePaths: this.state.imagePathList,

@@ -15,7 +15,7 @@ export class Main extends Component {
         return (
             <Tab.Navigator initialRouteName="Docs" activeColor="#f0edf6"
             inactiveColor="#3e2434"
-            barStyle={{ backgroundColor: '#694fad' }}>
+            barStyle={{ backgroundColor: '#576F90'}}>
                 <Tab.Screen name="Docs" component={Docs}
                 options={{
                     tabBarIcon: ({color,size}) => (
